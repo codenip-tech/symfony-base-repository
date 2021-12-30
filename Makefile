@@ -10,7 +10,7 @@ help: ## Show this help message
 	@egrep '^(.+)\:\ ##\ (.+)' ${MAKEFILE_LIST} | column -t -c 2 -s ':#'
 
 start: ## Start the containers
-	docker network create codenip-php81-symfony54-network || true
+	docker network create symfony-network || true
 	cp -n docker-compose.yml.dist docker-compose.yml || true
 	U_ID=${UID} docker-compose up -d
 
@@ -21,7 +21,7 @@ restart: ## Restart the containers
 	$(MAKE) stop && $(MAKE) start
 
 build: ## Rebuilds all the containers
-	docker network create application_network || true
+	docker network create symfony-network || true
 	cp -n docker-compose.yml.dist docker-compose.yml || true
 	U_ID=${UID} docker-compose build
 
