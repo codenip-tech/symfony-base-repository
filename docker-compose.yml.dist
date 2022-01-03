@@ -1,8 +1,8 @@
 version: '3.5'
 
 services:
-  symfony:
-    container_name: symfony
+  symfony-app:
+    container_name: symfony-app
     build:
       context: ./docker
       args:
