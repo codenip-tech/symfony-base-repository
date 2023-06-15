@@ -7,6 +7,7 @@ This repository contains the basic configuration to run Symfony applications wit
 - MySQL container running version 8.0.26
 
 ## Instructions
+- **[optional]** Replace all the occurrences of **symfony-app** in **docker-compose.yml.dist** and **Makefile** with some name more meaningful for your project
 - `make build` to build the containers
 - `make start` to start the containers
 - `make stop` to stop the containers
