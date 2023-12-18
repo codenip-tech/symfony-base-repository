@@ -1,4 +1,4 @@
-FROM php:8.1.1-fpm
+FROM php:8.2-apache
 
 ARG UID
 
@@ -30,9 +30,20 @@ RUN composer self-update
 RUN curl -1sLf 'https://dl.cloudsmith.io/public/symfony/stable/setup.deb.sh' | bash
 RUN apt install symfony-cli
 
-RUN mkdir -p /appdata/www
+RUN mkdir -p /var/www/html
 
 # Config XDEBUG
-COPY ./xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
+COPY xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
 
-WORKDIR /appdata/www
+# Update Apache config
+COPY ./default.conf /etc/apache2/sites-available/default.conf
+RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf \
+    && a2enmod rewrite \
+    && a2dissite 000-default \
+    && a2ensite default \
+    && service apache2 restart
+
+# Modify upload file size
+RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
+
+WORKDIR /var/www/html
