@@ -40,6 +40,8 @@ services:
 
 networks:
   symfony-app-network:
+    name: symfony-app-network
+    external: true
 
 volumes:
   symfony-app-mysql-data:
