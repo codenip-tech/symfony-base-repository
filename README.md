@@ -16,25 +16,41 @@ This repository contains the basic configuration to run Symfony applications wit
 - `make ssh` to SSH into the application container
 
 ## Create and Run the application
-- [Optional] Replace all the occurrences of symfony-app in the whole project with some name more meaningful for your project
-- `make start` to build and start the containers (you can use your IDE find and replace option to do so)
-- SSH into the container with `make ssh`
-- Create a Symfony project using the CLI (e.g. `symfony new --no-git --dir project`). See `symfony`command info for more options
-- Move all the content in the `project` folder to the root of the repository (do not forget to move also `.env`file)
-- Add the content of `.gitignore` file to the root one, it should look like this
-```
-.idea
-.vscode
-docker-compose.yml
+> [!TIP]
+> Replace all the occurrences of `symfony-app` in the project with a more meaningful name. 
+> You can use your IDE's find and replace option to complete this task.
 
-###> symfony/framework-bundle ###
-/.env.local
-/.env.local.php
-/.env.*.local
-/config/secrets/prod/prod.decrypt.private.php
-/public/bundles/
-/var/
-/vendor/
-###< symfony/framework-bundle ###
-```
-- Once you have installed you Symfony application go to http://localhost:1000
+
+1. Build and start the containers:
+    ```shell
+    make start
+    ```
+2. SSH into the container:
+    ```shell
+    make ssh
+     ```
+3. Create a Symfony project using the CLI:
+    ```shell
+    symfony new --no-git --dir project
+    ```
+4. Move all the content in the `project` folder to the root of the repository:
+    ```shell
+    mv project/{*,.*} . && rm -r project/
+    ```
+5. Add the content of `.gitignore` file to the root one, it should look like this:
+    ```text
+    .idea
+    .vscode
+    docker-compose.yml
+    
+    ###> symfony/framework-bundle ###
+    /.env.local
+    /.env.local.php
+    /.env.*.local
+    /config/secrets/prod/prod.decrypt.private.php
+    /public/bundles/
+    /var/
+    /vendor/
+    ###< symfony/framework-bundle ###
+    ```
+6. Once you have installed you Symfony application go to http://localhost:1000
