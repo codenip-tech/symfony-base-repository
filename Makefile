@@ -7,7 +7,7 @@ help: ## Show this help message
 	@echo 'usage: make [target]'
 	@echo
 	@echo 'targets:'
-	@egrep '^(.+)\:\ ##\ (.+)' ${MAKEFILE_LIST} | column -t -c 2 -s ':#'
+	@egrep '^(.+)\:\ ##\ (.+)' ${MAKEFILE_LIST} | while read -r l; do printf "\033[1;32m$$(echo $$l | cut -f 1 -d':')\033[00m:$$(echo $$l | cut -f 2- -d'#')\n"; done | column -t -c 2 -s ':#'
 
 start: ## Start the containers
 	cp -n docker-compose.yml.dist docker-compose.yml || true
