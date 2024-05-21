@@ -7,7 +7,7 @@ RUN adduser -u ${UID} --disabled-password --gecos "" appuser
 RUN mkdir /home/appuser/.ssh
 RUN chown -R appuser:appuser /home/appuser/
 RUN echo "StrictHostKeyChecking no" >> /home/appuser/.ssh/config
-RUN echo "alias sf=/appdata/www/bin/console" >> /home/appuser/.bashrc
+RUN echo "alias sf=/var/www/html/bin/console" >> /home/appuser/.bashrc
 
 # Install packages and PHP extensions
 RUN apt update \
