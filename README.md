@@ -20,6 +20,8 @@ This repository contains the basic configuration to run Symfony applications wit
 > Replace all the occurrences of `symfony-app` in the project with a more meaningful name. 
 > You can use your IDE's find and replace option to complete this task.
 
+> [!TIP]
+> Select your Symfony `version` updating the URL.
 
 1. Build and start the containers:
     ```shell
@@ -30,8 +32,6 @@ This repository contains the basic configuration to run Symfony applications wit
     make ssh
      ```
 3. Download the composer.json from [Symfony Skeleton](https://github.com/symfony/skeleton):
-     > [!TIP]
-     > Select your Symfony `version` updating the URL.
 
     <details open>
     <summary>Version 6.4 (LTS)</summary>
