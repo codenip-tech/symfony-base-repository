@@ -3,7 +3,7 @@
 This repository contains the basic configuration to run Symfony applications with MySQL database
 
 ## Content
-- PHP-APACHE container running version 8.2
+- PHP-APACHE container running version 8.3
 - MySQL container running version 8.2.0
 
 ## Instructions
@@ -29,28 +29,27 @@ This repository contains the basic configuration to run Symfony applications wit
     ```shell
     make ssh
      ```
-3. Create a Symfony project using the CLI:
-    ```shell
-    symfony new --no-git --dir project
+3. Download the composer.json from [Symfony Skeleton](https://github.com/symfony/skeleton):
+     > [!TIP]
+     > Select your Symfony `version` updating the URL.
+
+    <details open>
+    <summary>Version 6.4 (LTS)</summary>
+
+   ```shell
+    wget https://raw.githubusercontent.com/symfony/skeleton/6.4/composer.json
     ```
-4. Move all the content in the `project` folder to the root of the repository:
-    ```shell
-    mv project/{*,.*} . && rm -r project/
+    </details>
+    <details>
+    <summary>Version 7.1</summary>
+
+   ```shell
+    wget https://raw.githubusercontent.com/symfony/skeleton/7.1/composer.json
     ```
-5. Add the content of `.gitignore` file to the root one, it should look like this:
-    ```text
-    .idea
-    .vscode
-    docker-compose.yml
-    
-    ###> symfony/framework-bundle ###
-    /.env.local
-    /.env.local.php
-    /.env.*.local
-    /config/secrets/prod/prod.decrypt.private.php
-    /public/bundles/
-    /var/
-    /vendor/
-    ###< symfony/framework-bundle ###
+    </details>
+4. Install with composer
+
+   ```shell
+    composer install --no-interaction
     ```
-6. Once you have installed you Symfony application go to http://localhost:1000
+5. Once you have installed you Symfony application go to http://localhost:1000
